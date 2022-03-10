@@ -46,10 +46,17 @@ public class Generation {
 		}
 			
 	}
-	public boolean getState (int idx) {
-		return false;//Fix mee
+	
+	/**
+	 * Gets a state at a specified index
+	 * @param idx specified index
+	 * @return state returned in boolean form 
+	 */
+	public boolean getState(int idx) {
 		
+		return this.cellStates[idx];
 	}
+	
 	public boolean getStates() {
 		return false;//Fix mee
 		
