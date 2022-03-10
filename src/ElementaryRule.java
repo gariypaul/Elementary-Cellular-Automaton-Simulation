@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.StringJoiner;
 
 public class ElementaryRule extends Rule{
 	/**
@@ -34,6 +35,7 @@ public class ElementaryRule extends Rule{
 		boolean[] four= {false, true, true};
 		boolean[] five = {false, true, false};
 		boolean[] six = {false, false, true};
+		// boolean[] seven = {false,false,false};  not needed.
 						
 		// Initialize a string to represent the rule number in string binary
 		String ruleNum = String.format("%8s", Integer.toBinaryString(super.getRuleNum())).replace(' ','0');
@@ -66,12 +68,39 @@ public class ElementaryRule extends Rule{
 			return generator.getState(7);
 		}
 	}
-
+	/**
+	 * This method returns a string representation of the elementary rule changes to a state
+	 * @param falseSymbol this is the character to be used as the false state representation
+	 * @param trueSymbol this is the character to be used as the true state representation
+	 * @return returns the string representation of elementary rule
+	 */
 	@Override
 	public String ruleTableString(char falseSymbol, char trueSymbol) {
+		StringJoiner sj= new StringJoiner(" ");
+		StringJoiner sj2 = new StringJoiner("   "," "," ");
+		String ruleNum = String.format("%8s", Integer.toBinaryString(super.getRuleNum())).replace(' ','0');
+		Generation generator = new Generation(ruleNum,'1');
+
+		//add the eight possible states to string joiner
+		sj.add(""+trueSymbol+trueSymbol+trueSymbol);
+		sj.add(""+trueSymbol+trueSymbol+falseSymbol);
+		sj.add(""+trueSymbol+falseSymbol+trueSymbol);
+		sj.add(""+trueSymbol+falseSymbol+falseSymbol);
+		sj.add(""+falseSymbol+trueSymbol+trueSymbol);
+		sj.add(""+falseSymbol+trueSymbol+falseSymbol);
+		sj.add(""+falseSymbol+falseSymbol+trueSymbol);
+		sj.add(""+falseSymbol+falseSymbol+falseSymbol);
 		
-		
-		return null;
+		//add the states to the other string joiner
+		for(int i=0;i<8;i++) {
+			if(generator.getState(i)==false){
+				sj2.add(""+falseSymbol);
+			}
+			else {
+				sj2.add(""+trueSymbol);
+			}
+		}
+		return sj.toString()+System.lineSeparator()+sj2.toString();
 	}
 	
 }
