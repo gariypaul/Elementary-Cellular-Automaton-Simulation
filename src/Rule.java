@@ -1,4 +1,4 @@
-
+import java.lang.Math;
 public abstract class Rule{
 	private int ruleNum=0;
 	/**
@@ -47,19 +47,9 @@ public abstract class Rule{
 	 */
 	public static boolean[] getNeighborhoodByRadius(int idx,int radius,Generation gen) {
 		boolean[] neighborhoodBool = new boolean[1+(radius*2)];
-		if(!(idx==0)&&idx!=gen.size()-1) {
-			for(int i=0,j=idx-radius;i<neighborhoodBool.length&&j<idx+radius+1;i++,j++) {
-				if(j<0) {
-					neighborhoodBool[i]=gen.getState(gen.size()+j);
-				}
-				else if(j>=gen.size()) {
-					neighborhoodBool[i]=gen.getState(j-gen.size());
-				}
-				else {
-					neighborhoodBool[i]=gen.getState(j);
-				}
-				
-			}
+		for(int i=0,j=idx-radius;i<neighborhoodBool.length&&j<idx+radius+1;i++,j++) {
+				int index =Math.floorMod(j, gen.size());
+				neighborhoodBool[i]=gen.getState(index);
 		}
 		return neighborhoodBool;		
 	} 
