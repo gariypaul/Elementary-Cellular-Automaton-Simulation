@@ -64,10 +64,26 @@ public class Generation {
 		return Arrays.copyOf(this.cellStates, this.cellStates.length);
 		
 	}
-	public String getStates(char falseSymbol,char trueSymbol) {
-		return null;//Fix mee
-		
+	/**
+	 * Returns string of states with specified characters to represent boolean states 
+	 * @param falseSymbol input to represent boolean false in string
+	 * @param trueSymbol input to represent boolean true in string
+	 * @return string returned with specified boolean states representative chars
+	 */
+	public String getStates(char falseSymbol, char trueSymbol) {
+		String cellStates="";
+		for(int i=0; i<this.cellStates.length; ++i){
+			
+			if(this.cellStates[i]==true){
+				cellStates= cellStates+Character.toString(trueSymbol);
+			}
+			else{
+				cellStates = cellStates+Character.toString(falseSymbol);
+			}
+		}
+		return cellStates;
 	}
+
 	public int size() {
 		return 0;//Fix mee
 		
