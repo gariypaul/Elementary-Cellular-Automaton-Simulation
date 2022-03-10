@@ -56,9 +56,12 @@ public class Generation {
 		
 		return this.cellStates[idx];
 	}
-	
-	public boolean getStates() {
-		return false;//Fix mee
+	/**
+	 * Returns array of states
+	 * @return array that contains the boolean states 
+	 */
+	public boolean[] getStates() {
+		return Arrays.copyOf(this.cellStates, this.cellStates.length);
 		
 	}
 	public String getStates(char falseSymbol,char trueSymbol) {
