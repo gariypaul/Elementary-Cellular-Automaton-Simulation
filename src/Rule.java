@@ -17,8 +17,12 @@ public abstract class Rule{
 			this.ruleNum=255;
 		}
 	}
+	/**
+	 * Returns the current RuleNum
+	 * @return returns the integer form of the rule number
+	 */
 	public int getRuleNum() {
-		return ruleNum;//complete mee
+		return this.ruleNum;
 	}
 	public abstract boolean[] getNeighborhood(int idx, Generation gen);
 	
