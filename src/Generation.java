@@ -84,8 +84,12 @@ public class Generation {
 		return cellStates;
 	}
 
-	public int size() {
-		return 0;//Fix mee
-		
+	/**
+	 * Returns size of the states array
+	 * @return returns an integer number that is the length of the states array
+	 */
+	public int size(){
+		return this.cellStates.length;
 	}
+
 }
