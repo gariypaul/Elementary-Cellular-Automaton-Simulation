@@ -1,9 +1,11 @@
 
 public class TotalisticRule extends Rule {
 
-	protected TotalisticRule(int ruleNum) {
+	protected TotalisticRule(int ruleNum) throws RuleNumException {
 		super(ruleNum);
-		// TODO Auto-generated constructor stub
+		if(ruleNum<0||ruleNum>63) {
+			throw new RuleNumException(0, 63);
+		}
 	}
 
 	@Override
