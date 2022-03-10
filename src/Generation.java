@@ -15,8 +15,36 @@ public class Generation {
 		}
 	}
 	
-	public Generation(boolean[] states, char trueSymbol) {
-		
+	/**
+	 * Generates status array from specified string with defined symbol to represent true
+	 * @param states string with the status 
+	 * @param trueSymbol symbol in the string that represents true
+	 */
+	public Generation (String states, char trueSymbol){
+		if(!(states==null)){
+			if (states.equals("")) {
+				boolean[] init = new boolean[states.length()+1];
+				this.cellStates=Arrays.copyOf(init, init.length);
+			}
+			else {
+				boolean[] init = new boolean[states.length()];
+				this.cellStates=Arrays.copyOf(init, init.length);
+			}
+			for(int i=0;i<states.length();i++){
+				if(states.charAt(i)==trueSymbol){
+					this.cellStates[i]=true;
+				}
+				else{
+					this.cellStates[i]=false;
+				}
+			}
+			
+		}
+		else {
+			
+			this.cellStates[0]=false;
+		}
+			
 	}
 	public boolean getState (int idx) {
 		return false;//Fix mee
