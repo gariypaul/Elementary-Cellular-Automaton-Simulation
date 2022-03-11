@@ -1,9 +1,7 @@
 
 public class RuleNumException extends Exception{
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	/**
 	 * Sets the exception message using a given range
