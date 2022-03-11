@@ -1,4 +1,8 @@
-
+/**
+ * This is a CellularAutomatonNotFoundException when the when the CellularAutomaton specified in CellularAutomaton enum is unknown
+ * @author gariy
+ *
+ */
 public class CellularAutomatonNotFoundException extends Exception {
 
 	private static final long serialVersionUID = 1L;
