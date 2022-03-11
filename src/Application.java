@@ -29,7 +29,7 @@ public class Application {
 	}
 
 	private void validateNumArgs(String[] args) {
-		if(args.length!=this.NUM_EXPECTED_ARGS) {
+		if(args.length!=Application.NUM_EXPECTED_ARGS) {
 			throwRuntimeExceptionWithUsageMessage();
 		}
 	}
@@ -60,15 +60,23 @@ public class Application {
 				.startsWith("jar");
 	}
 
-	private void parseArgs(String[] args) {
+	private void parseArgs(String[] args) throws RuleNumException, CellularAutomatonNotFoundException {
 		// TODO: Parse each of the six arguments, construct the appropriate 
 		// Automaton, and print out the full evolution to System.out. 
 		// Refer to the README for details on exception handling.
+		Generation AppGen = new Generation(args[4],args[3].charAt(0));
+		int ruleNum = Integer.parseInt(args[1]);
+		int numEvolutions = Integer.parseInt(args[5]);
+		Automaton automaton = Automaton.createAutomaton(CellularAutomaton.parse(args[0]), ruleNum, AppGen);
+		automaton.evolve(numEvolutions);
+		System.out.print(automaton.toString());
 	}
 	/**
 	 * This method runs the application using the arguments passed through Application
+	 * @throws CellularAutomatonNotFoundException thrown if the CellularAutomaton is not valid
+	 * @throws RuleNumException thrown id the rule number is not valid
 	 */
-	public void run() {
+	public void run() throws RuleNumException, CellularAutomatonNotFoundException {
 		parseArgs(appArgs);
 	}
 
