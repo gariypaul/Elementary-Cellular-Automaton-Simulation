@@ -1,6 +1,10 @@
 import java.util.Arrays;
 import java.util.StringJoiner;
-
+/**
+ * This is the Elementary Rule Object class
+ * @author gariy
+ *
+ */
 public class ElementaryRule extends Rule{
 	
 	protected ElementaryRule(int ruleNum) throws RuleNumException {
