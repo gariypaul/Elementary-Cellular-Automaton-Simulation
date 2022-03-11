@@ -12,11 +12,11 @@ public abstract class Automaton {
 	public char falseSymbol = '0';
 	public char trueSymbol = '1';
 	
-	protected Automaton(int ruleNum, Generation initial) {
+	protected Automaton(int ruleNum, Generation initial) throws RuleNumException {
 		rule = createRule(ruleNum);
 		generations.add(initial);
 	}
-	protected Automaton(String filename) throws FileNotFoundException {
+	protected Automaton(String filename) throws FileNotFoundException, RuleNumException {
 		//scanning file to construct the Automation with
 		Scanner scnr = new Scanner(new File(filename));
 		int ruleNum = scnr.nextInt();
@@ -26,7 +26,7 @@ public abstract class Automaton {
 		scnr.close();
 		
 		//initializing values and generation 
-		createRule(ruleNum);
+		rule = createRule(ruleNum);
 		Generation gen = new Generation(states,this.trueSymbol);
 		generations.add(gen);
 	}
@@ -109,23 +109,26 @@ public abstract class Automaton {
 		return rule.ruleTableString(falseSymbol, trueSymbol);
 	}
 	
-	protected abstract Rule createRule(int ruleNum);
+	protected abstract Rule createRule(int ruleNum) throws RuleNumException;
 	/**
 	 * This method creates an Automaton that corresponds to the type of CellularAutomaton that is provided (Elementary(ECA) or Totalistic(TCA))
 	 * @param ca this is the type of CellularAutomaton that is to be created
 	 * @param ruleNum this is the rule number to be used in the Automaton
 	 * @param initial this is the initial Generation in the Automaton
 	 * @return this is the Automaton that is created
+	 * @throws RuleNumException 
 	 */
-	public static Automaton createAutomaton(CellularAutomaton ca, int ruleNum, Generation initial) {
-		Automaton automaton;
-		if(ca.equals(CellularAutomaton.ECA)){
-			automaton = new ElementaryAutomaton(ruleNum,initial);
+	public static Automaton createAutomaton(CellularAutomaton ca, int ruleNum, Generation initial) throws RuleNumException {
+		if(ca==null) {
+			return null;
 		}
-		else {
-			automaton = new TotalisticAutomaton(ruleNum,initial);
+		else if(ca.equals(CellularAutomaton.ECA)){
+			return new ElementaryAutomaton(ruleNum,initial);
 		}
-		return automaton;
+		else{
+			return new TotalisticAutomaton(ruleNum,initial);
+		}
+		
 		
 	}
 }
