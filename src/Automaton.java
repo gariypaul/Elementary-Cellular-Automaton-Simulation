@@ -1,4 +1,7 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public abstract class Automaton {
 	private Rule rule;
@@ -10,8 +13,19 @@ public abstract class Automaton {
 		createRule(ruleNum);
 		generations.add(initial);
 	}
-	protected Automaton(String filename) {
+	protected Automaton(String filename) throws FileNotFoundException {
+		//scanning file to construct the Automation with
+		Scanner scnr = new Scanner(new File(filename));
+		int ruleNum = scnr.nextInt();
+		this.falseSymbol=scnr.next().charAt(0);
+		this.trueSymbol=scnr.next().charAt(0);
+		String states = scnr.next();
+		scnr.close();
 		
+		//initializing values and generation 
+		createRule(ruleNum);
+		Generation gen = new Generation(states,this.trueSymbol);
+		generations.add(gen);
 	}
 	public int evolve (int numSteps) {
 		return numSteps;//fix mee
