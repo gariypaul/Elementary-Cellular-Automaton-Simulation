@@ -1,18 +1,17 @@
+import java.io.FileNotFoundException;
 
 public class ElementaryAutomaton extends Automaton {
 
-	protected ElementaryAutomaton(int ruleNum, Generation initial) {
+	protected ElementaryAutomaton(int ruleNum, Generation initial) throws RuleNumException {
 		super(ruleNum, initial);
-		// TODO Auto-generated constructor stub
 	}
 	
-	protected ElementaryAutomaton(String filename) {
+	protected ElementaryAutomaton(String filename) throws RuleNumException, FileNotFoundException{
 		super(filename);
 	}
 	@Override
-	protected Rule createRule(int ruleNum) {
-		// TODO Auto-generated method stub
-		return null;
+	protected Rule createRule(int ruleNum) throws RuleNumException {
+		return new ElementaryRule(ruleNum);
 	}
 
 }
