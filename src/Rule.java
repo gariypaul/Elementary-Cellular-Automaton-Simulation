@@ -1,10 +1,7 @@
 import java.lang.Math;
 public abstract class Rule{
 	private int ruleNum=0;
-	/**
-	 * Constructor method that initializes a rule object with the rule number as input
-	 * @param ruleNum the rule number that the Rule object is constructed with
-	 */
+	
 	protected Rule(int ruleNum) {
 			this.ruleNum=ruleNum;
 	}
