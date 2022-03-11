@@ -60,16 +60,22 @@ public class Application {
 				.startsWith("jar");
 	}
 
-	private void parseArgs(String[] args) throws RuleNumException, CellularAutomatonNotFoundException {
+	private void parseArgs(String[] args){
 		// TODO: Parse each of the six arguments, construct the appropriate 
 		// Automaton, and print out the full evolution to System.out. 
 		// Refer to the README for details on exception handling.
 		Generation AppGen = new Generation(args[4],args[3].charAt(0));
 		int ruleNum = Integer.parseInt(args[1]);
 		int numEvolutions = Integer.parseInt(args[5]);
-		Automaton automaton = Automaton.createAutomaton(CellularAutomaton.parse(args[0]), ruleNum, AppGen);
-		automaton.evolve(numEvolutions);
-		System.out.print(automaton.toString());
+		try {
+			Automaton automaton;
+			automaton = Automaton.createAutomaton(CellularAutomaton.parse(args[0]), Integer.parseInt(args[1]), AppGen);
+			automaton.evolve(numEvolutions);
+			System.out.println(automaton.toString());
+		} catch (RuntimeException | RuleNumException | CellularAutomatonNotFoundException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		
 	}
 	/**
 	 * This method runs the application using the arguments passed through Application
@@ -77,24 +83,19 @@ public class Application {
 	 * @throws RuleNumException thrown id the rule number is not valid
 	 */
 	public void run() {
-		try {
-			parseArgs(appArgs);
-		} catch (RuleNumException | CellularAutomatonNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		parseArgs(appArgs);
 	}
-
+	/**
+	 * This is the main method to Application class
+	 * @param args these are the arguments to be passed through to the Application
+	 */
 	public static void main(String[] args) {
-		// TODO: Construct and run an Application using the 
-		// supplied main method arguments. Refer to the README
-		// for details on RuntimeException handling.
 		try{
 			Application mainApp = new Application(args);
 			mainApp.run();
 		}
 		catch(Exception e){
-			System.err.print(e.getMessage());
+			System.err.println(e.getMessage());
 		}
 		
 	}
