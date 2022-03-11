@@ -18,12 +18,40 @@ public class TotalisticRule extends Rule {
 	public boolean[] getNeighborhood(int idx, Generation gen) {
 		return Arrays.copyOf(super.getNeighborhoodByRadius(idx, 2, gen), super.getNeighborhoodByRadius(idx, 2, gen).length);
 	}
-
+	/**
+	 * Method to change an index under a given rule with regards to its state and those of its neighbors
+	 * @param neighborhood the states of the neighborhood in a boolean array
+	 * @return returns the boolean state which the index should have after evolution
+	 */
 	@Override
 	public boolean evolve(boolean[] neighborhood) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+		int numberTrue = 0;
+		for(int i=0;i<neighborhood.length;i++) {
+			if(neighborhood[i]==true) {
+				numberTrue++;
+			}
+		}
+		String ruleNum = String.format("%6s", Integer.toBinaryString(super.getRuleNum())).replace(' ','0');
+		Generation generator = new Generation(ruleNum,'1');
+		if(numberTrue==5){
+			return generator.getState(0);
+		}
+		else if (numberTrue==4){
+			return generator.getState(1);
+		}
+		else if(numberTrue==3) {
+			return generator.getState(2);
+		}
+		else if(numberTrue==2) {
+			return generator.getState(3);
+		}
+		else if(numberTrue==1) {
+			return generator.getState(4);
+		}
+		else {
+			return generator.getState(5);
+		}
+}
 
 	@Override
 	public String ruleTableString(char falseSymbol, char trueSymbol) {
