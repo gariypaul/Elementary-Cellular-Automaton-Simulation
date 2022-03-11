@@ -1,7 +1,17 @@
 
+/**
+ * Enum to return type of Cellular Automaton to be used 
+ * @author gariy
+ *
+ */
 public enum CellularAutomaton {
-
+	/**
+	 * This is the Elementary Cellular Automaton
+	 */
 	ECA,
+	/**
+	 * This is the Totalistic Cellular Automaton
+	 */
 	TCA;
 	/**
 	 * This returns the type of CellularAtomaton that is to be used to generate an Automaton object
