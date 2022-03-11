@@ -1,4 +1,9 @@
 import java.lang.Math;
+/**
+ * This is an abstract class for Rule Object subclasses
+ * @author gariy
+ *
+ */
 public abstract class Rule{
 	private int ruleNum=0;
 	
