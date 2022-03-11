@@ -63,10 +63,12 @@ public abstract class Automaton {
 		return generations.get(stepNum);
 		
 	}
-	
+	/**
+	 * This gets the rule number of the Automaton
+	 * @return this is the Rule number of the Automaton
+	 */
 	public int getRuleNum() {
-		return 1;//fixmee
-		
+		return this.rule.getRuleNum();		
 	}
 	public int getTotalSteps() {
 		return 0;//fix mee
