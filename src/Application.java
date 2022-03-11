@@ -61,11 +61,7 @@ public class Application {
 	}
 
 	private void parseArgs(String[] args){
-		// TODO: Parse each of the six arguments, construct the appropriate 
-		// Automaton, and print out the full evolution to System.out. 
-		// Refer to the README for details on exception handling.
 		Generation AppGen = new Generation(args[4],args[3].charAt(0));
-		int ruleNum = Integer.parseInt(args[1]);
 		int numEvolutions = Integer.parseInt(args[5]);
 		try {
 			Automaton automaton;
