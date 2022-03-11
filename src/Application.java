@@ -75,8 +75,6 @@ public class Application {
 	}
 	/**
 	 * This method runs the application using the arguments passed through Application
-	 * @throws CellularAutomatonNotFoundException thrown if the CellularAutomaton is not valid
-	 * @throws RuleNumException thrown id the rule number is not valid
 	 */
 	public void run() {
 		parseArgs(appArgs);
