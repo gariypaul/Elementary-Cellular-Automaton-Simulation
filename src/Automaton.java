@@ -13,7 +13,7 @@ public abstract class Automaton {
 	public char trueSymbol = '1';
 	
 	protected Automaton(int ruleNum, Generation initial) {
-		createRule(ruleNum);
+		rule = createRule(ruleNum);
 		generations.add(initial);
 	}
 	protected Automaton(String filename) throws FileNotFoundException {
