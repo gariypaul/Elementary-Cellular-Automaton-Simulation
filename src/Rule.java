@@ -13,11 +13,25 @@ public abstract class Rule{
 	public int getRuleNum() {
 		return this.ruleNum;
 	}
-	
+	/**
+	 * This is an abstract method to get the neighborhood states to an index
+	 * @param idx this is the index the neighborhood is to be found 
+	 * @param gen this is the generation from which the states are got
+	 * @return returns a boolean array of the states
+	 */
 	public abstract boolean[] getNeighborhood(int idx, Generation gen);
-	
+	/**
+	 * This is an abstract method to change an index under a given rule with regards to its state and those of its neighbors
+	 * @param neighborhood the states of the neighborhood in a boolean array
+	 * @return returns the boolean state which the index should have after evolution
+	 */
 	public abstract boolean evolve (boolean[] neighborhood);
-	
+	/**
+	 * This is an abstract method that returns a string representation of the elementary rule changes to a state
+	 * @param falseSymbol this is the character to be used as the false state representation
+	 * @param trueSymbol this is the character to be used as the true state representation
+	 * @return returns the string representation of elementary rule
+	 */
 	public abstract String ruleTableString(char falseSymbol, char trueSymbol);
 
 	
