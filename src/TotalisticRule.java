@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.StringJoiner;
 
 public class TotalisticRule extends Rule {
 	
@@ -51,12 +52,28 @@ public class TotalisticRule extends Rule {
 		else {
 			return generator.getState(5);
 		}
-}
-
+	}
+	/**
+	 * This method returns the rule table for the set rule in String format
+	 * @param falseSymbol this is the character to be used in place of a false state
+	 * @param trueSymbol this is the character to be used in place of a true state
+	 * @return returns string form of the rule table
+	 */
 	@Override
 	public String ruleTableString(char falseSymbol, char trueSymbol) {
-		// TODO Auto-generated method stub
-		return null;
+		StringJoiner sj = new StringJoiner(" ");
+		String rules = "5 4 3 2 1 0";
+		String ruleNum = String.format("%6s", Integer.toBinaryString(super.getRuleNum())).replace(' ','0');
+		Generation generator = new Generation(ruleNum,'1');
+		for(int i=0;i<generator.size();i++) {
+			if(generator.getState(i)==true) {
+				sj.add(""+trueSymbol);
+			}
+			else {
+				sj.add(""+falseSymbol);
+			}
+		}
+		return rules+System.lineSeparator()+sj.toString();
 	}
 
 }
