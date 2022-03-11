@@ -1,5 +1,10 @@
 import java.util.Arrays;
-
+//Code copied from Project one Implementation
+/**
+ * This is the class for the Generation object
+ * @author gariy
+ *
+ */
 public class Generation {
 	private boolean[] cellStates= new boolean[1];
 	/**
