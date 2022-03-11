@@ -70,6 +70,8 @@ public class Application {
 		try {
 			Automaton automaton;
 			automaton = Automaton.createAutomaton(CellularAutomaton.parse(args[0]), Integer.parseInt(args[1]), AppGen);
+			automaton.falseSymbol=args[2].charAt(0);
+			automaton.trueSymbol=args[3].charAt(0);
 			automaton.evolve(numEvolutions);
 			System.out.println(automaton.toString());
 		} catch (RuntimeException | RuleNumException | CellularAutomatonNotFoundException e) {
