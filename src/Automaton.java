@@ -43,9 +43,12 @@ public abstract class Automaton {
 		return stepsDone;
 		
 	}
-	private Generation getCurrentGeneration() {
-		// TODO Auto-generated method stub
-		return null;
+	/**
+	 * This method gets and returns the current method
+	 * @return returns the last method in the Automaton
+	 */
+	public Generation getCurrentGeneration() {
+		return generations.get(generations.size()-1);
 	}
 	public Generation getGeneration(int stepNum) {
 		return null;//fix mee
