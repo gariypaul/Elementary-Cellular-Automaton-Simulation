@@ -101,9 +101,14 @@ public abstract class Automaton {
 		}
 		return sj.toString();
 	}
+	/**
+	 * This method returns a string representation of the table that depicts the rule governing the automaton.
+	 * @return this is the String representation of the rule table.
+	 */
 	public String ruleTableString() {
-		return "Automaton";//fix mee
+		return rule.ruleTableString(falseSymbol, trueSymbol);
 	}
+	
 	protected abstract Rule createRule(int ruleNum);
 	
 	public static Automaton createAutomaton(CellularAutomaton ca, int ruleNum, Generation initial) {
