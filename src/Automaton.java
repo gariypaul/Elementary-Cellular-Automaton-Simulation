@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.StringJoiner;
 
 public abstract class Automaton {
 	private Rule rule;
@@ -81,15 +82,24 @@ public abstract class Automaton {
 	}
 	/**
 	 * This method saves the String format of the Automaton in a specified file
+	 * @param fileName this is the name of the file to be written
 	 */
 	public void saveEvolution(String fileName) throws IOException{
 		FileWriter writer = new FileWriter(new File(fileName));
 		writer.write(toString());
 		writer.close();
 	}
+	/**
+	 * This method return the String format of the Automaton
+	 * @return this is the String format of the Automaton
+	 */
 	@Override
 	public String toString() {
-		return "Automaton";//fix mee
+		StringJoiner sj = new StringJoiner(System.lineSeparator());
+		for(int i=0; i<generations.size();i++) {
+			sj.add(generations.get(i).getStates(this.falseSymbol,this.trueSymbol));
+		}
+		return sj.toString();
 	}
 	public String ruleTableString() {
 		return "Automaton";//fix mee
