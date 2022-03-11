@@ -1,3 +1,8 @@
+/**
+ * This is a RuleNumberException that is thrown when the rule number used is invalid
+ * @author gariy
+ *
+ */
 
 public class RuleNumException extends Exception{
 
