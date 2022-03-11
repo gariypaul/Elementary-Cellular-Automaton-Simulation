@@ -1,4 +1,8 @@
-
+/**
+ * Application class generates CellularAutomation and evolves the Automation for a specified number of steps
+ * @author gariy
+ *
+ */
 public class Application {
 
 	private static final int NUM_EXPECTED_ARGS = 6;
