@@ -2,12 +2,13 @@ import java.util.ArrayList;
 
 public abstract class Automaton {
 	private Rule rule;
-	private ArrayList <Generation> generations;
+	private ArrayList <Generation> generations= new ArrayList<Generation>();
 	public char falseSymbol = '0';
 	public char trueSymbol = '1';
 	
 	protected Automaton(int ruleNum, Generation initial) {
-		
+		createRule(ruleNum);
+		generations.add(initial);
 	}
 	protected Automaton(String filename) {
 		
