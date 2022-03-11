@@ -66,13 +66,15 @@ public class Application {
 
 	private void parseArgs(String[] args){
 		try {
+			
+			String cellularautomaton = args[0];
+			CellularAutomaton ca = CellularAutomaton.parse(cellularautomaton);
 			String states = args[4];
 			char trueSymbol = args[3].charAt(0);
 			char falseSymbol = args[2].charAt(0);
 			int numEvolutions = Integer.parseInt(args[5]);
-			String cellularautomaton = args[0];
 			int ruleNum = Integer.parseInt(args[1]);
-			CellularAutomaton ca = CellularAutomaton.parse(cellularautomaton);
+			
 		
 		Generation AppGen = new Generation(states,trueSymbol);
 		
