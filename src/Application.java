@@ -76,13 +76,26 @@ public class Application {
 	 * @throws CellularAutomatonNotFoundException thrown if the CellularAutomaton is not valid
 	 * @throws RuleNumException thrown id the rule number is not valid
 	 */
-	public void run() throws RuleNumException, CellularAutomatonNotFoundException {
-		parseArgs(appArgs);
+	public void run() {
+		try {
+			parseArgs(appArgs);
+		} catch (RuleNumException | CellularAutomatonNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public static void main(String[] args) {
 		// TODO: Construct and run an Application using the 
 		// supplied main method arguments. Refer to the README
 		// for details on RuntimeException handling.
+		try{
+			Application mainApp = new Application(args);
+			mainApp.run();
+		}
+		catch(Exception e){
+			System.err.print(e.getMessage());
+		}
+		
 	}
 }
