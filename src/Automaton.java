@@ -27,9 +27,25 @@ public abstract class Automaton {
 		Generation gen = new Generation(states,this.trueSymbol);
 		generations.add(gen);
 	}
+	/**
+	 * This method evolves the Automaton for a specific number of steps
+	 * @param numSteps this is the number of steps that the Automaton is to be evolved by
+	 * @return returns the number of steps that the Automaton has been evolved for
+	 */
 	public int evolve (int numSteps) {
-		return numSteps;//fix mee
+		int stepsDone =0;
+		if (!(numSteps<=0)){
+			while(numSteps!=stepsDone){
+				generations.add(rule.evolve(getCurrentGeneration()));
+				stepsDone++;
+			}
+		}
+		return stepsDone;
 		
+	}
+	private Generation getCurrentGeneration() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	public Generation getGeneration(int stepNum) {
 		return null;//fix mee
