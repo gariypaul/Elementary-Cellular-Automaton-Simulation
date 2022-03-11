@@ -1,6 +1,10 @@
 import java.util.Arrays;
 import java.util.StringJoiner;
-
+/**
+ * This the class for a TotalisticRule object
+ * @author gariy
+ *
+ */
 public class TotalisticRule extends Rule {
 	
 	protected TotalisticRule(int ruleNum) throws RuleNumException {
