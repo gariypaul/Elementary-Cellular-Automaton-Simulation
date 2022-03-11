@@ -110,9 +110,22 @@ public abstract class Automaton {
 	}
 	
 	protected abstract Rule createRule(int ruleNum);
-	
+	/**
+	 * This method creates an Automaton that corresponds to the type of CellularAutomaton that is provided (Elementary(ECA) or Totalistic(TCA))
+	 * @param ca this is the type of CellularAutomaton that is to be created
+	 * @param ruleNum this is the rule number to be used in the Automaton
+	 * @param initial this is the initial Generation in the Automaton
+	 * @return this is the Automaton that is created
+	 */
 	public static Automaton createAutomaton(CellularAutomaton ca, int ruleNum, Generation initial) {
-		return null;//fix mee
+		Automaton automaton;
+		if(ca.equals(CellularAutomaton.ECA)){
+			automaton = new ElementaryAutomaton(ruleNum,initial);
+		}
+		else {
+			automaton = new TotalisticAutomaton(ruleNum,initial);
+		}
+		return automaton;
 		
 	}
 }
