@@ -5,11 +5,21 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.StringJoiner;
-
+/**
+ * This is an Abstract class for the Implementation of Cellular Automaton
+ * @author gariy
+ *
+ */
 public abstract class Automaton {
 	private Rule rule;
 	private ArrayList <Generation> generations= new ArrayList<Generation>();
+	/**
+	 * this is the character that represents a false boolean state
+	 */
 	public char falseSymbol = '0';
+	/**
+	 * this is the character that represents a true boolean state
+	 */
 	public char trueSymbol = '1';
 	
 	protected Automaton(int ruleNum, Generation initial) throws RuleNumException {
@@ -83,6 +93,7 @@ public abstract class Automaton {
 	/**
 	 * This method saves the String format of the Automaton in a specified file
 	 * @param fileName this is the name of the file to be written
+	 * @throws IOException the method throws an IOException if access to file is invalid
 	 */
 	public void saveEvolution(String fileName) throws IOException{
 		FileWriter writer = new FileWriter(new File(fileName));
@@ -115,8 +126,8 @@ public abstract class Automaton {
 	 * @param ca this is the type of CellularAutomaton that is to be created
 	 * @param ruleNum this is the rule number to be used in the Automaton
 	 * @param initial this is the initial Generation in the Automaton
+	 * @throws RuleNumException throws a RuleNumException if the rule number is invalid
 	 * @return this is the Automaton that is created
-	 * @throws RuleNumException 
 	 */
 	public static Automaton createAutomaton(CellularAutomaton ca, int ruleNum, Generation initial) throws RuleNumException {
 		if(ca==null) {
