@@ -19,9 +19,13 @@ public class Application {
 	private static final String USAGE_FMT_STRING_JAR = "Usage: java -jar %s " + ARG_NAMES;
 
 	private String[] appArgs;
-	
+	/**
+	 * This is a constructor to initialize the Application
+	 * @param args these are the arguments to be passed into the application
+	 */
 	public Application(String[] args)  {
-		
+		validateNumArgs(args);
+		appArgs=args;
 	}
 
 	private void validateNumArgs(String[] args) {
@@ -61,10 +65,11 @@ public class Application {
 		// Automaton, and print out the full evolution to System.out. 
 		// Refer to the README for details on exception handling.
 	}
-
+	/**
+	 * This method runs the application using the arguments passed through Application
+	 */
 	public void run() {
-		// TODO: Call the parseArgs method using the previously 
-		// given arguments.
+		parseArgs(appArgs);
 	}
 
 	public static void main(String[] args) {
