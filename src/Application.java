@@ -65,13 +65,22 @@ public class Application {
 	}
 
 	private void parseArgs(String[] args){
-		Generation AppGen = new Generation(args[4],args[3].charAt(0));
-		int numEvolutions = Integer.parseInt(args[5]);
 		try {
+			String states = args[4];
+			char trueSymbol = args[3].charAt(0);
+			char falseSymbol = args[2].charAt(0);
+			int numEvolutions = Integer.parseInt(args[5]);
+			String cellularautomaton = args[0];
+			int ruleNum = Integer.parseInt(args[1]);
+			CellularAutomaton ca = CellularAutomaton.parse(cellularautomaton);
+		
+		Generation AppGen = new Generation(states,trueSymbol);
+		
+		
 			Automaton automaton;
-			automaton = Automaton.createAutomaton(CellularAutomaton.parse(args[0]), Integer.parseInt(args[1]), AppGen);
-			automaton.falseSymbol=args[2].charAt(0);
-			automaton.trueSymbol=args[3].charAt(0);
+			automaton = Automaton.createAutomaton(ca, ruleNum, AppGen);
+			automaton.falseSymbol=falseSymbol;
+			automaton.trueSymbol=trueSymbol;
 			automaton.evolve(numEvolutions);
 			System.out.println(automaton.toString());
 		} catch (RuntimeException | RuleNumException | CellularAutomatonNotFoundException e) {
@@ -94,7 +103,7 @@ public class Application {
 			Application mainApp = new Application(args);
 			mainApp.run();
 		}
-		catch(Exception e){
+		catch(RuntimeException e){
 			System.err.println(e.getMessage());
 		}
 		
