@@ -50,10 +50,20 @@ public abstract class Automaton {
 	public Generation getCurrentGeneration() {
 		return generations.get(generations.size()-1);
 	}
+	/**
+	 * This method gets the Generation that was evolved at a certain step number in the Automaton
+	 * @param stepNum this is the step number to be acquired
+	 * @return this is the Generation that was evolved at the specified step number
+	 */
 	public Generation getGeneration(int stepNum) {
-		return null;//fix mee
+		if(stepNum>generations.size()) {
+			evolve((stepNum+1)-generations.size());
+		}
+			
+		return generations.get(stepNum);
 		
 	}
+	
 	public int getRuleNum() {
 		return 1;//fixmee
 		
