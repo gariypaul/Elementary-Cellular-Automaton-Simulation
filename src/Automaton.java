@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -77,8 +79,13 @@ public abstract class Automaton {
 	public int getTotalSteps() {
 		return (generations.size()-1);
 	}
-	public void saveEvolution() {
-		
+	/**
+	 * This method saves the String format of the Automaton in a specified file
+	 */
+	public void saveEvolution(String fileName) throws IOException{
+		FileWriter writer = new FileWriter(new File(fileName));
+		writer.write(toString());
+		writer.close();
 	}
 	@Override
 	public String toString() {
