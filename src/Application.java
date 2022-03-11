@@ -21,13 +21,13 @@ public class Application {
 	private String[] appArgs;
 	
 	public Application(String[] args)  {
-		// TODO: Validate the number of arguments passed 
-		// and set the appArgs variable.
+		
 	}
 
 	private void validateNumArgs(String[] args) {
-		// TODO: Validate the number of arguments and throw an exception
-		// if they do not match the expected amount.
+		if(args.length!=this.NUM_EXPECTED_ARGS) {
+			throwRuntimeExceptionWithUsageMessage();
+		}
 	}
 
 	private void throwRuntimeExceptionWithUsageMessage() {
