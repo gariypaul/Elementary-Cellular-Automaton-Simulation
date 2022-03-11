@@ -1,5 +1,9 @@
 import java.io.FileNotFoundException;
-
+/**
+ * This is Elementary Automaton Object class
+ * @author gariy
+ *
+ */
 public class ElementaryAutomaton extends Automaton {
 
 	protected ElementaryAutomaton(int ruleNum, Generation initial) throws RuleNumException {
