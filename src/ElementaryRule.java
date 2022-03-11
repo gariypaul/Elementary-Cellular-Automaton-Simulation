@@ -2,12 +2,13 @@ import java.util.Arrays;
 import java.util.StringJoiner;
 
 public class ElementaryRule extends Rule{
-	/**
-	 * Constructor for new ElementaryRule Object
-	 * @param ruleNum this is the rule number to be set
-	 */
-	protected ElementaryRule(int ruleNum) {
+	
+	protected ElementaryRule(int ruleNum) throws RuleNumException {
 		super(ruleNum);
+		if(ruleNum<0||ruleNum>255) {
+			throw new RuleNumException(0, 255);
+		}
+		
 	}
 	/**
 	 * This method returns a boolean array with the state of the index specified and the neighbors to a radius one on the left and right
