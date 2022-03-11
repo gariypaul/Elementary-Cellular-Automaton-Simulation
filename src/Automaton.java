@@ -70,8 +70,12 @@ public abstract class Automaton {
 	public int getRuleNum() {
 		return this.rule.getRuleNum();		
 	}
+	/**
+	 * This method returns the total number of steps that have been taken to evolve the Automaton
+	 * @return this is the integer value of the total number of steps that have been taken to evolve the Automaton
+	 */
 	public int getTotalSteps() {
-		return 0;//fix mee
+		return (generations.size()-1);
 	}
 	public void saveEvolution() {
 		
