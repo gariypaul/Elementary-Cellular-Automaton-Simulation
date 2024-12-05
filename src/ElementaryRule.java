@@ -23,7 +23,7 @@ public class ElementaryRule extends Rule{
 	 */
 	@Override
 	public boolean[] getNeighborhood(int idx, Generation gen) {
-		return Arrays.copyOf(super.getNeighborhoodByRadius(idx, 1, gen),super.getNeighborhoodByRadius(idx, 1, gen).length);
+		return Rule.getNeighborhoodByRadius(idx, 1, gen);
 	}
 	/**
 	 * Method to change an index under a given rule with regards to its state and those of its neighbors

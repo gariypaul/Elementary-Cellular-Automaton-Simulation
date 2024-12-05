@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.StringJoiner;
 /**
  * This the class for a TotalisticRule object
@@ -21,7 +20,7 @@ public class TotalisticRule extends Rule {
 	 */
 	@Override
 	public boolean[] getNeighborhood(int idx, Generation gen) {
-		return Arrays.copyOf(super.getNeighborhoodByRadius(idx, 2, gen), super.getNeighborhoodByRadius(idx, 2, gen).length);
+		return Rule.getNeighborhoodByRadius(idx, 2, gen);
 	}
 	/**
 	 * Method to change an index under a given rule with regards to its state and those of its neighbors
